@@ -1,47 +1,33 @@
-
-package com.mycompany.ifood;
-
 import java.util.ArrayList;
+import java.util.List;
 
-public class Cliente {
-    private String email;
-    private String senha;
-    
-    public Cliente(){
+public class Cliente extends Usuario {
+    private List<Produto> carrinho;
+
+    public Cliente(String nome, String email) {
+        super(nome, email);
+        this.carrinho = new ArrayList<>();
     }
-    public Cliente(String email, String senha){
-        email = this.email;
-        senha = this.senha;
+
+    public void adicionarAoCarrinho(Produto p) {
+        carrinho.add(p);
     }
-    Boolean e = false;
-    //sequencia de caracteres
-    String caractere = "@gmail.com";
-    public void setEmail(String email) {
-        
-        //verifica se ha essa sequencia de caracteres no final da palavra
-        if(this.email.endsWith(caractere)){
-            this.email = email;
-            // teste de email errado ao cadastrar
-            e = true;
-        }else{
-            System.out.println("REESCRIVA SEU E MAIL com @gmail.com NO FINAL");
+
+    public double calcularTotal() {
+        double total = 0;
+        for (Produto p : carrinho) {
+            total += p.getPreco();
         }
+        return total;
     }
-    boolean s = false;
-    public void setSenha(String senha) {
-        if(senha.length() >= 8){
-            senha = this.senha;
-            // teste de senha errada ao cadastrar
-            s = true;
-        }else{
-            System.err.println("Erro: A senha deve ter pelo menos 8 caracteres.");
+    
+    public int calcularTempoEsperaTotal() {
+        int tempoMax = 0;
+        // Simplificação: o tempo total é o do prato mais demorado (assumindo preparo paralelo)
+        // Ou pode ser a soma. O PDF não especifica, vou usar soma por segurança.
+        for (Produto p : carrinho) {
+            tempoMax += p.getTempoPreparo();
         }
+        return tempoMax;
     }
-    private ArrayList<Cliente> listaCliente = new ArrayList();
-    public void adicionarCliente(String email, String senha){
-        Cliente novoCliente = new Cliente(email, senha);
-        listaCliente.add(novoCliente);
-    }
-    
-    
 }
