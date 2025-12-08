@@ -170,11 +170,5 @@ mvn test
 
 ---
 
-## Próximos passos sugeridos
-
-* Criar o diagrama UML em `docs/diagrams`.
-* Implementar as classes de domínio (modelo) e testes unitários básicos.
-* Construir a interface gráfica mínima para cadastro e listagem de produtos.
-
 ---
 
