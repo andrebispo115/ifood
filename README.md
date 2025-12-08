@@ -2,13 +2,13 @@
 
 > Projeto acadêmico: sistema simplificado de pedidos (estudo de POO + GUI em Java)
 
-## 📌 Objetivo
+##  Objetivo
 
 Desenvolver um sistema de pedidos para restaurante que permita praticar conceitos de **Programação Orientada a Objetos** (herança, polimorfismo, interfaces) e construir uma **interface gráfica** em Java (Swing ou JavaFX). O projeto pode ser desenvolvido em equipe de até 3 alunos e deve ficar hospedado em um repositório no GitHub.
 
 ---
 
-## ✅ Funcionalidades Principais
+##  Funcionalidades Principais
 
 ### Para o Dono do Restaurante
 
@@ -31,7 +31,7 @@ Desenvolver um sistema de pedidos para restaurante que permita praticar conceito
 
 ---
 
-## 🧭 Fluxo do Usuário (resumido)
+## Fluxo do Usuário (resumido)
 
 ### Dono do Restaurante
 
@@ -51,7 +51,7 @@ Desenvolver um sistema de pedidos para restaurante que permita praticar conceito
 
 ---
 
-## 🧱 Diagrama UML (requisitos)
+##  Diagrama UML (requisitos)
 
 Crie um diagrama de classes que represente as relações abaixo e salve no diretório `docs/diagrams/` como `uml-classes.png` ou `uml-classes.svg`.
 
@@ -76,19 +76,8 @@ Crie um diagrama de classes que represente as relações abaixo e salve no diret
 
 Inclua também os métodos principais em cada classe (constructors, getters/setters e operações relevantes).
 
----
 
-## 🛠️ Tecnologias Sugeridas
-
-* Linguagem: **Java 11+**
-* GUI: **Swing** (mais simples) ou **JavaFX** (mais moderno)
-* Build: **Maven** ou **Gradle**
-* Persistência (opcional / extra): SQLite, H2, ou PostgreSQL
-* Testes: JUnit 5
-
----
-
-## 🔧 Estrutura de Pastas Sugerida
+##  Estrutura de Pastas Sugerida
 
 ```
 restaurant-order-system/
@@ -106,7 +95,7 @@ restaurant-order-system/
 
 ---
 
-## 🚀 Como Executar (local)
+##  Como Executar (local)
 
 1. Clone o repositório:
 
@@ -133,7 +122,7 @@ ou com Gradle:
 
 ---
 
-## 🧪 Testes
+##  Testes
 
 * Escreva testes unitários com **JUnit 5** para: cadastro/edição/remover produto, cálculo de total do pedido e tempo, fluxo de login/cadastro (se aplicável).
 * Comando para rodar testes:
@@ -148,20 +137,8 @@ mvn test
 
 ---
 
-## 💾 Sugestões para Pontuação Extra (Extras / APIs Java)
 
-Implemente um ou mais itens abaixo para ganhar pontos extras:
-
-* **Banco de dados**: persistência com SQLite/H2/Postgres, uso de DAO/Repository.
-* **Geolocalização**: calcular restaurantes próximos baseado no endereço (integração com APIs externas ou algoritmo próprio).
-* **Tratamento de exceção**: cobertura robusta de erros e mensagens claras na GUI.
-* **Testes Unitários e de Integração**: cobertura elevada e pipeline de CI.
-* **Integração com API externa**: por exemplo, APIs de mapas, tempo de preparação estimado por ML simples, etc.
-* **Arquitetura limpa**: separação em camadas (model, service, repository, ui).
-
----
-
-## 🧾 Especificação breve de Classes (exemplo de métodos)
+##  Especificação breve de Classes (exemplo de métodos)
 
 * `Usuario`
 
@@ -193,36 +170,6 @@ Implemente um ou mais itens abaixo para ganhar pontos extras:
 
 ---
 
-## 📁 Boas Práticas para o Repositório
-
-* README claro (este arquivo).
-* Commits atômicos e mensagens descritivas.
-* Issues e um pequeno board (GitHub Projects) para organização das tarefas.
-* Branching: `main` protegido, `develop` + `feature/*` para desenvolvimento.
-
----
-
-## 🤝 Como Contribuir
-
-1. Fork o repositório
-2. Crie uma branch: `feature/nome-da-feature`
-3. Faça commits claros e push
-4. Abra um Pull Request descrevendo a alteração
-
----
-
-## 👥 Equipe
-
-* Máximo de 3 alunos por equipe. Incluam um arquivo `TEAM.md` com nome, matrícula, e e-mail de cada integrante.
-
----
-
-## 📝 Licença
-
-Escolham uma licença para o projeto (por exemplo, MIT). Adicione um arquivo `LICENSE` no repositório.
-
----
-
 ## Próximos passos sugeridos
 
 * Criar o diagrama UML em `docs/diagrams`.
@@ -231,8 +178,3 @@ Escolham uma licença para o projeto (por exemplo, MIT). Adicione um arquivo `LI
 
 ---
 
-> Se quiser, eu posso:
->
-> * Gerar automaticamente o esqueleto de código Java (pacotes e classes) com base nessa estrutura.
-> * Criar um diagrama UML simples (SVG) e adicionar ao diretório `docs/diagrams`.
-> * Gerar o arquivo `pom.xml` ou `build.gradle` inicial.
