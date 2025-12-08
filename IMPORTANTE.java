@@ -6,7 +6,7 @@ ArrayList<Cliente>listaClientes = new ArrayList();
         new Tela_cadastro(gerenciador);
         new Tela_2(gerenciador);
 
-*****************************************************************************************
+//****************************************************************************///
 
 classe tela_1
   private GerenciadorDeClientes gerenciador;
@@ -38,7 +38,7 @@ classe tela_1
     }   
     }
 
-********************************************************************
+//***************************************************************//
 
 classe Tela_Cadastro
 
@@ -77,7 +77,7 @@ private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {
     }
     } 
 
-**************************************************************************
+//**************************************************************************//
 classe Usuario
 
   public Usuario(String nome, String email, String senha, int id) {
@@ -103,7 +103,7 @@ public void setSenha(String senha) {
         }
     }
 
-*************************************************
+//***************************************************************************//
 
 public class GerenciadorDeClientes {
     private ArrayList<Cliente> listaCliente = new ArrayList<>();
