@@ -142,6 +142,9 @@ mvn test
 
   * `Cliente cliente, List<Produto> itens, double total, int tempoEstimado`
   * `calcularTotal()`, `calcularTempo()`
+ 
+<img width="903" height="1019" alt="image" src="https://github.com/user-attachments/assets/e30968f0-ff4b-4ce6-bc55-e2ba63b9000f" />
+
 
 ---
 
