@@ -14,7 +14,15 @@ classe tela_1
     public Tela_1(GerenciadorDeClientes gerenciador){
     // Errado: gerenciador = this.gerenciador;
     this.gerenciador = gerenciador; // Correto: Atribuir o parâmetro ao atributo
-    initComponents(); 
+    initComponents();
+}
+public Tela_1() {
+        initComponents(); 
+        int idAtual = GerenciadorDeClientes.proximoId; 
+
+    // Concatena a string com o valor da variável
+    LBTeste.setText("Próximo ID a ser usado: " + idAtual);
+}
 
  private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
         String email = txtEmail.getText();
