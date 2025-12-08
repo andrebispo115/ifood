@@ -1,8 +1,9 @@
 public class DonoRestaurante extends Usuario {
     private Restaurante restaurante;
 
-    public DonoRestaurante(String nome, String email, Restaurante restaurante) {
-        super(nome, email);
+    // Construtor atualizado com Senha
+    public DonoRestaurante(String nome, String email, String senha, Restaurante restaurante) {
+        super(nome, email, senha);
         this.restaurante = restaurante;
     }
 
