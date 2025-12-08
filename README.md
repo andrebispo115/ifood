@@ -1,3 +1,9 @@
+
+##INTRGRANTES
+* André Bispo Santos do Vale
+* Edgar Vinicius Teixeira Teófilo
+* Matheus Lima de Sá
+
 # Sistema de Pedidos de Restaurante
 
 > Projeto acadêmico: sistema simplificado de pedidos (estudo de POO + GUI em Java)
