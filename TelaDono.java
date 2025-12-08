@@ -9,7 +9,8 @@ public class TelaDono extends JFrame {
         DonoRestaurante dono = (DonoRestaurante) DadosGlobais.usuarioLogado;
         this.restaurante = dono.getRestaurante();
 
-        setTitle("Gerenciamento - " + restaurante.getNome());
+        // Adicionei o ID no título
+setTitle("Gerenciamento - Dono ID: " + dono.getId() + " - " + restaurante.getNome());
         setSize(600, 500);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
@@ -62,7 +63,7 @@ public class TelaDono extends JFrame {
 
     private void abrirFormulario(Produto produtoExistente) {
         JDialog dialog = new JDialog(this, produtoExistente == null ? "Novo Produto" : "Editar Produto", true);
-        dialog.setSize(450, 450);
+        dialog.setSize(450, 480);
         dialog.setLayout(new GridLayout(9, 2));
         dialog.setLocationRelativeTo(this);
 
@@ -73,14 +74,13 @@ public class TelaDono extends JFrame {
         
         String[] tipos = {"Comida", "Bebida"};
         JComboBox<String> cmbTipo = new JComboBox<>(tipos);
-        JTextField txtExtra1 = new JTextField(); // Cozinha ou Tamanho
+        JTextField txtExtra1 = new JTextField(); 
         
-        // --- MUDANÇA: APENAS DUAS OPÇÕES INTELIGENTES ---
+        // --- OPÇÕES INTELIGENTES (Vegano/Vegetariano) ---
         JPanel panelOpcoes = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
         JCheckBox chkVegetariano = new JCheckBox("Vegetariano");
         JCheckBox chkVegano = new JCheckBox("Vegano");
         
-        // Lógica de Exclusão Mútua (Um desmarca o outro)
         chkVegetariano.addActionListener(e -> {
             if (chkVegetariano.isSelected()) chkVegano.setSelected(false);
         });
@@ -89,7 +89,6 @@ public class TelaDono extends JFrame {
             if (chkVegano.isSelected()) chkVegetariano.setSelected(false);
         });
 
-        // Opção para Bebida
         JCheckBox chkAlcoolica = new JCheckBox("Alcoólica");
         
         panelOpcoes.add(chkVegetariano);
@@ -97,7 +96,7 @@ public class TelaDono extends JFrame {
         panelOpcoes.add(chkAlcoolica);
         // --------------------------------------------------
 
-        // Lógica de Preenchimento na Edição
+        // Preenchimento na Edição
         if (produtoExistente != null) {
             txtNome.setText(produtoExistente.getNome());
             txtDescricao.setText(produtoExistente.getDescricao());
@@ -108,10 +107,8 @@ public class TelaDono extends JFrame {
                 cmbTipo.setSelectedItem("Comida");
                 Comida c = (Comida) produtoExistente;
                 txtExtra1.setText(c.getTipoCozinha());
-                
                 chkVegano.setSelected(c.isVegano());
                 chkVegetariano.setSelected(c.isVegetariano());
-                
             } else if (produtoExistente instanceof Bebida) {
                 cmbTipo.setSelectedItem("Bebida");
                 Bebida b = (Bebida) produtoExistente;
@@ -131,7 +128,6 @@ public class TelaDono extends JFrame {
         dialog.add(lblExtra1); dialog.add(txtExtra1);
         dialog.add(new JLabel("Opções:")); dialog.add(panelOpcoes);
 
-        // Controla visibilidade
         Runnable atualizarVisibilidade = () -> {
             if (cmbTipo.getSelectedItem().equals("Comida")) {
                 lblExtra1.setText("Tipo Cozinha:");
@@ -154,12 +150,29 @@ public class TelaDono extends JFrame {
         JButton btnSalvar = new JButton("Salvar");
         dialog.add(new JLabel("")); dialog.add(btnSalvar);
 
+        // --- AÇÃO SALVAR CORRIGIDA ---
         btnSalvar.addActionListener(e -> {
             try {
+                if (txtNome.getText().trim().isEmpty()) {
+                    throw new DadoInvalidoException("O nome do produto não pode ser vazio!");
+                }
+                
                 String nome = txtNome.getText();
                 String desc = txtDescricao.getText();
-                double preco = Double.parseDouble(txtPreco.getText().replace(",", "."));
-                int tempo = Integer.parseInt(txtTempo.getText());
+                double preco;
+                int tempo;
+                
+                try {
+                    preco = Double.parseDouble(txtPreco.getText().replace(",", "."));
+                    tempo = Integer.parseInt(txtTempo.getText());
+                } catch (NumberFormatException nfe) {
+                    throw new DadoInvalidoException("Preço e Tempo devem ser números válidos!");
+                }
+
+                if (preco <= 0) throw new DadoInvalidoException("O preço deve ser maior que zero!");
+                
+                // CORREÇÃO AQUI: Agora permite tempo = 0, mas bloqueia negativo
+                if (tempo < 0) throw new DadoInvalidoException("O tempo não pode ser negativo!");
 
                 if (produtoExistente != null) {
                     restaurante.removerProduto(produtoExistente);
@@ -167,23 +180,32 @@ public class TelaDono extends JFrame {
 
                 if (cmbTipo.getSelectedItem().equals("Comida")) {
                     String cozinha = txtExtra1.getText();
+                    if (cozinha.trim().isEmpty()) throw new DadoInvalidoException("Tipo de cozinha obrigatório!");
                     
-                    // Se nenhum estiver marcado, ambos serão false (o que é o "Normal")
                     boolean isVegano = chkVegano.isSelected();
                     boolean isVegetariano = chkVegetariano.isSelected();
                     
                     restaurante.adicionarProduto(new Comida(nome, desc, preco, tempo, cozinha, isVegano, isVegetariano));
                 } else {
-                    int ml = txtExtra1.getText().isEmpty() ? 0 : Integer.parseInt(txtExtra1.getText());
+                    String mlStr = txtExtra1.getText();
+                    if (mlStr.trim().isEmpty()) throw new DadoInvalidoException("Tamanho (ml) obrigatório!");
+                    int ml = Integer.parseInt(mlStr);
+                    if (ml <= 0) throw new DadoInvalidoException("Tamanho deve ser positivo!");
+                    
                     boolean alcool = chkAlcoolica.isSelected();
                     restaurante.adicionarProduto(new Bebida(nome, desc, preco, tempo, ml, alcool));
                 }
+                
                 atualizarLista();
                 dialog.dispose();
+
+            } catch (DadoInvalidoException ex) {
+                JOptionPane.showMessageDialog(dialog, "Erro: " + ex.getMessage(), "Dados Inválidos", JOptionPane.WARNING_MESSAGE);
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(dialog, "Erro nos dados: " + ex.getMessage());
+                JOptionPane.showMessageDialog(dialog, "Erro inesperado: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
         });
+        // -----------------------------
 
         dialog.setVisible(true);
     }
