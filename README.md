@@ -1,5 +1,5 @@
 
-INTRGRANTES
+# INTEGRANTES
 * André Bispo Santos do Vale
 * Edgar Vinicius Teixeira Teófilo
 * Matheus Lima de Sá
