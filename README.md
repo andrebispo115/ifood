@@ -93,6 +93,7 @@ Desenvolver um sistema de pedidos para restaurante que permita praticar conceito
 
 <img width="903" height="1019" alt="image" src="https://github.com/user-attachments/assets/e30968f0-ff4b-4ce6-bc55-e2ba63b9000f" />
 
+https://www.mermaidchart.com/app/projects/95c55d1c-1048-4551-ab63-0aae6f9580ec/diagrams/643887a2-8ec1-4480-b0bc-7ebfe79ece94/share/invite/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkb2N1bWVudElEIjoiNjQzODg3YTItOGVjMS00NDgwLWIwYmMtN2ViZmU3OWVjZTk0IiwiYWNjZXNzIjoiRWRpdCIsImlhdCI6MTc2NTIyNTkzMn0.Zt6vzim7Degn_d08EksnxNhLZ6cU5c2N79XT_prU-k4
 
 ---
 
