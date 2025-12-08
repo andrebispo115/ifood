@@ -51,31 +51,6 @@ Desenvolver um sistema de pedidos para restaurante que permita praticar conceito
 
 ---
 
-##  Diagrama UML (requisitos)
-
-Crie um diagrama de classes que represente as relações abaixo e salve no diretório `docs/diagrams/` como `uml-classes.png` ou `uml-classes.svg`.
-
-**Classes principais sugeridas**:
-
-* `Usuario` (superclasse)
-
-  * `Cliente` (herda `Usuario`)
-  * `DonoRestaurante` (herda `Usuario`)
-* `Restaurante` (possui lista de `Produto`)
-* `Produto` (superclasse)
-
-  * `Comida` (tipo de cozinha, vegetariano/vegano)
-  * `Bebida` (tamanho ml, alcoólica)
-* `Pedido` (contém lista de `Produto`, referencia `Cliente`)
-
-**Relações e conceitos**:
-
-* Herança: `Cliente` / `DonoRestaurante` <- `Usuario`; `Comida` / `Bebida` <- `Produto`.
-* Composição / agregação: `Restaurante` tem uma lista de `Produto`; `Pedido` tem uma lista de `Produto`.
-* Interfaces: por exemplo, `Gerenciavel` com métodos `adicionar()`, `remover()`, `atualizar()`—podendo ser implementada por `Restaurante` ou por um gerenciador de produtos.
-
-Inclua também os métodos principais em cada classe (constructors, getters/setters e operações relevantes).
-
 
 ##  Estrutura de Pastas Sugerida
 
